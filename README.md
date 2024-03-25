@@ -1,4 +1,21 @@
+## Running exporter
+
+1. git clone this repo
+3. Specify credentials in `dorado_exporter/config.ini`.
+4. Run `docker-compose up`
+5. Configure prometheus based on the example configuration
+
+
+## Dashboard installation
+
+1. Install Boomtable panel. `grafana-cli plugins install yesoreyeram-boomtable-panel`
+2. Import grafana/grafana_dashboard.json to your Grafana installation
+3. Enjoy =)
+
+
 ## Overview
+
+
 ## Description
 Prometheus exporter for Huawei Dorado SAN
 
@@ -111,16 +128,3 @@ Dashboard displays almost all metrics listed
 ![Screenshot](grafana/screenshots/3.png)
 ![Screenshot](grafana/screenshots/4.png)
 ![Screenshot](grafana/screenshots/5.png)
-
-## Running exporter
-
-1. Specify your Dorado superadmin credentials inside `dorado_exporter/config.ini`. Admin is not able to collect metrics. So superadmin creds is the only option
-2. Run `docker-compose build && docker-compose up`
-3. Configure prometheus to collect data from *your_exporter_ip:9720*. Note: you must pass your SAN address with "address" GET parameter (http://your_exporter_ip:9720?address=your_dorado_ip:port)
-
-
-## Dashboard installation
-
-1. Install Boomtable panel. `grafana-cli plugins install yesoreyeram-boomtable-panel`
-2. Import grafana/grafana_dashboard.json to your Grafana installation
-3. Enjoy =)
