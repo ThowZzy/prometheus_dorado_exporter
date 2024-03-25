@@ -33,7 +33,9 @@ def get_data(api_connection, api_host, api_port, path, params={}):
     device_id = api_connection[0]['data']['deviceid']
     endpoint = "https://{0}:{1}/deviceManager/rest/{2}/{3}".format(api_host, api_port, device_id, path)
     api_cookies = api_connection[1]
-    r = requests.get(endpoint, verify=False, cookies=api_cookies, params=params)
+    auth_token = api_connection[0]['data']["iBaseToken"]
+    headers={"iBaseToken":auth_token}
+    r = requests.get(endpoint, verify=False, cookies=api_cookies, headers=headers, params=params)
     result = json.loads(r.content.decode('cp1251'))
     return result
 
